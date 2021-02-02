@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Cityzen.kota>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+    @Html.ActionLink("Tambah Data", "Create")
+</p>*@
+<a href='@Url.Action("Create")' class="btn btn-primary">Tambah Data</a><br/>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Nama Lengkap
+        </th>
+        <th>
+            Kota
+        </th>
+        <th>
+            Address
+        </th>
+        <th style="text-align: center;">Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td style="text-align:center;">
+                <a href='@Url.Action("Edit", new { id = item.id })' class="btn btn-primary">Edit</a>
+                <a href='@Url.Action("Details", new { id = item.id })' class="btn btn-info">Details</a>
+                <a href='@Url.Action("Delete", new { id = item.id })' class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
